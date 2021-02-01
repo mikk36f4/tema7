@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-areal.html</title>
+
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <p>Gæt et tal mellem 0-20!</p>
+    <input type="text" id="svar">
+    <button>Klik og kig i konsollen!</button>
+
+
+    <script>
+        document.querySelector("button").addEventListener("click", buttonClicked);
+
+        function buttonClicked() {
+
+            let tal = Math.round(Math.random()*20)
+
+            let svar = document.querySelector("#svar").value;
+
+            let resultat
+
+            if(svar == tal) {
+                resultat = `Det var rigtigt gættet!`;
+            }
+            else {
+                resultat = `Forkert gæt, prøv igen!`;
+            }
+
+            console.log(resultat);
+
+        }
+    </script>
+
+</body></html>
