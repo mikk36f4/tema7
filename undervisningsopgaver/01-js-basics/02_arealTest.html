@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>01-areal.html</title>
+    <title>02-arealTest.html</title>
 
     <link rel="stylesheet" href="">
 </head>
@@ -12,14 +12,23 @@
 <body>
 
     <script>
-        let længde = 31;
-        let bredde = 25;
+        let længde = 30;
+        let bredde = 4;
         let areal = længde * bredde;
-        let resultat = `Længden er ${længde} meter og bredden er ${bredde} meter. Arealet er ${areal}`;
+        let resultat;
+
+        if (areal < 100) {
+            resultat = "Arealet er for lille";
+
+        } else if (areal < 200) {
+            resultat = "Arealet er ok";
+
+        } else {
+            resultat = "Arealet er for stort";
+        }
+
         console.log(resultat);
 
     </script>
 
-</body>
-
-</html>
+</body></html>
