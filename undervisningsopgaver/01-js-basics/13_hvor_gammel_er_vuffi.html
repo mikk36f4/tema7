@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-areal.html</title>
+
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+   <h1>Hvor gammel er din hund?</h1>
+    <p>Den gamle metode! Hundens alder:</p>
+    <input type="text" id="gamle">
+        <button id="button1">Klik og kig i konsollen!</button>
+    <p>Den nye metode! Hundens alder:</p>
+    <input type="text" id="nye">
+        <button id="button2">Klik og kig i konsollen!</button>
+
+
+
+    <script>
+        document.querySelector("#button1").addEventListener("click", buttonClicked);
+
+        function buttonClicked() {
+
+            let gamle = document.querySelector("#gamle").value;
+            let nye = document.querySelector("#nye").value;
+            let menneskeårny = gamle * 7;
+
+            let resultat
+
+            if(menneskeårny == menneskeårny) {
+              resultat = `Din hund i menneskealder: ${menneskeårny} år`;
+            }
+
+            console.log(resultat);
+
+        }
+
+        document.querySelector("#button2").addEventListener("click", buttonClicked);
+
+        function buttonClicked() {
+
+            let gamle = document.querySelector("#gamle").value;
+            let nye = document.querySelector("#nye").value;
+            let menneskeårny = gamle * 7;
+
+            let resultat
+
+            if(menneskeårny == menneskeårny) {
+              resultat = `Din hund i menneskealder: ${menneskeårny} år`;
+            }
+
+            console.log(resultat);
+
+        }
+    </script>
+
+</body></html>
