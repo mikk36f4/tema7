@@ -63,7 +63,11 @@
 
 
     <script>
+
+//        TO MÅDER AT ÆNDRE TITEL/TEKST VIA JS
         const titel = document.querySelector("header");
+//        titel.textContent =("Test test baby")
+        titel.innerHTML = "<h1>helløj<h1/>";
         console.log(titel);
 
         const undertitel = document.querySelector("h2");
@@ -80,6 +84,7 @@
         console.log(billede1)
 
         const brødtekst1 = document.querySelector("article:first-child p");
+        brødtekst1.innerHTML = "<p>helløj<p>";
         console.log(brødtekst1)
 
         const undertitel1 = document.querySelector("article:first-child h3");
@@ -101,6 +106,8 @@
 
         const footer = document.querySelector("footer");
         console.log(footer)
+
+
 
 
 
