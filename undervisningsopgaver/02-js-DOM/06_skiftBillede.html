@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<style>
+    img {
+        width: 100%;
+    }
+
+    @media (min-width: 600px) {
+
+
+        div {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+
+        }
+    }
+
+    header {
+        text-align: center;
+        border: solid black 0.1rem;
+
+    }
+
+    footer {
+        text-align: center;
+        border: solid black 0.1rem;
+    }
+
+    article {
+
+        border: solid black 0.1rem;
+
+    }
+
+</style>
+
+<body>
+
+    <header>
+        <h1>Titel</h1>
+    </header>
+
+    <h2>Undertitel</h2>
+    <div id=indhold>
+        <article>
+
+            <img src="https://placeimg.com/640/480/any">
+            <h3>Hey</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, minus!</p>
+        </article>
+
+        <article>
+            <img src="https://placeimg.com/640/480/any" alt="monkaS">
+            <h3>Hey</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, dolorem.</p>
+        </article>
+    </div>
+    <footer>This is the footer</footer>
+
+
+    <script>
+
+
+            // LAV ET TILFÆLDIGT BILLEDE NÅR DU KLIKKER PÅ BILLEDET
+        let tal = Math.round(Math.random()*10);
+        console.log(tal);
+        document.querySelector("article:first-child img").addEventListener("click",nytBillede);
+
+
+        function nytBillede() {
+
+
+        let articleFirst = document.querySelector("article:first-child img");
+        articleFirst.src="https://placeimg.com/640/480/"+tal;
+        articleFirst.alt = "supdude";
+        console.log(articleFirst);
+        }
+
+
+    </script>
+</body>
+
+
+
+
+
+</html>
