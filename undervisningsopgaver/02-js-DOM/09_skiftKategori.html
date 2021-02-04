@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+<!--    <link rel="stylesheet" href="style.css">-->
+<style>
+    img{
+    max-width: 100%;
+}
+
+
+
+article{
+        border: 1px solid black;
+    }
+header, footer{
+    text-align: center;
+    padding: 10px 0;
+    border: 1px solid black;
+}
+@media  (min-width: 600px){
+#opg1{
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+/*    border: 2px solid black;*/
+}
+}
+</style>
+</head>
+
+
+
+<body>
+   <main>
+     <header>
+      <h1>Titel</h1>
+       </header>
+        <h2>Undertitel</h2>
+       <section id="opg1">
+
+
+
+           <article id="first_article">
+               <img src="billeder/img1.png" alt="">
+               <h3>Article 1</h3>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure laborum, cum. Eligendi veritatis rerum voluptates dignissimos officiis ipsam id ea commodi suscipit minima doloremque ullam omnis hic, quos repellat quod, neque cupiditate molestias distinctio molestiae sed nobis voluptatum tempore amet. </p>
+           </article>
+           <article id="second_article">
+               <img src="billeder/img2.png" alt="">
+               <h3>Article 2</h3>
+               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure laborum, cum. Eligendi veritatis rerum voluptates dignissimos officiis ipsam id ea commodi suscipit minima doloremque ullam omnis hic, quos repellat quod, neque cupiditate molestias distinctio molestiae sed nobis voluptatum tempore amet.</p>
+           </article>
+       </section>
+   </main>
+   <footer>This is a footer</footer>
+    <script>
+    const titel = document.querySelector("header");
+    console.log(titel);
+
+
+
+    const undertitel = document.querySelector("h2");
+    console.log(undertitel);
+
+
+
+    const section = document.querySelector("section");
+    console.log(section);
+
+
+
+
+
+
+    //nyt random billede
+    let tal = Math.round(Math.random()*10);
+    console.log(tal);
+    document.querySelector("article:first-child img").addEventListener("click", nytbillede);
+
+
+
+    function nytbillede(){
+    let articleFirst = document.querySelector("article:first-child img");
+    articleFirst.src=("https://placeimg.com/400/300/arch?t=" + tal);
+    articleFirst.alt="Ny alt text";
+    console.log(articleFirst);
+    }
+
+
+
+    const articleSecond = document.querySelector("article:first-child h3");
+    console.log(articleSecond);
+
+
+
+    const articleThird = document.querySelector("article:first-child p");
+    console.log(articleThird);
+
+
+
+    //skift billedkategori
+    const secondArticleFirst = document.querySelector("article:nth-child(2) img");
+    secondArticleFirst.addEventListener("click", skift);
+    console.log(secondArticleFirst);
+
+
+
+    function skift(){
+        const nummer = Math.round(Math.random() * 4);
+        secondArticleFirst.src = "https://placeimg.com/400/300/" + kategori[nummer];
+        secondArticleFirst.alt = kategori[nummer];
+
+
+
+        console.log(skift);
+    }
+    const kategori = ["animals", "arch", "people", "nature", "tech"];
+
+    const secondArticlesecond = document.querySelector("article:nth-child(2) h3");
+    console.log(secondArticlesecond);
+
+
+
+    const secondArticlethird = document.querySelector("article:nth-child(2) p");
+    console.log(secondArticlethird);
+
+
+
+
+
+
+
+    const footer = document.querySelector("footer");
+    console.log(footer);
+
+
+
+    </script>
+</body>
+</html>
