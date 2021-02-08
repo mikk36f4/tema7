@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BB</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1em;
+            padding: 2rem 8rem 0rem 8rem;
+        }
+
+        article {
+            padding: 0.5rem;
+            border: 3px solid black;
+            background-color: antiquewhite
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 1rem;
+            padding-left: 8rem;
+            padding-right: 8rem;
+        }
+
+        body {
+            background-color: #2e2e2e;
+        }
+
+        .valgt {
+            border: 3px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>BISTRO BABUSHKA</h1>
+
+    </header>
+
+    <nav>
+
+        <button data-ret="alle" class="valgt">Alle</button>
+        <button data-ret="forretter">Forretter</button>
+        <button data-ret="hovedretter">Hovedretter</button>
+        <button data-ret="desserter">Desserter</button>
+        <button data-ret="sideorders">Side Orders</button>
+        <button data-ret="drikkevarer">Drikkevare</button>
+    </nav>
+    <main></main>
+
+
+    <template>
+
+        <article>
+
+            <img src="" alt="" class="billede">
+            <h2 class="navn"></h2>
+            <p class="beskrivelse"></p>
+            <p class="pris"></p>
+            <button id="læs">Læs mere!</button>
+        </article>
+    </template>
+
+    <script>
+        const url = "https://babushka-dd8a.restdb.io/rest/menu";
+        const key = "600ec2fb1346a1524ff12de4";
+
+        async function hentData() {
+            const resspons = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-apikey': key
+                }
+            });
+            const json = await resspons.json();
+            vis(json);
+        }
+
+        const main = document.querySelector("main");
+        const template = document.querySelector("template").content;
+
+        function vis(json) {
+            console.log(json)
+            json.forEach(ret => {
+                const klon = template.cloneNode(true);
+                klon.querySelector(".billede").src = "https://babushka-dd8a.restdb.io/media/" + ret.billede;
+                klon.querySelector(".navn").textContent = ret.navn;
+                klon.querySelector(".beskrivelse").textContent = ret.kortbeskrivelse;
+                klon.querySelector(".pris").textContent = ret.pris;
+                main.appendChild(klon);
+            })
+        }
+
+        hentData();
+    </script>
+
+</body></html>
