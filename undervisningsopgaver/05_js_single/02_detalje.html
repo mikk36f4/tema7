@@ -16,9 +16,11 @@
 
     <article id="person">
         <h2 class="navn"></h2>
-        <p class="troende">Troende? </p>
-        <img src="" alt="" class="billede">
+        <p class="troende"></p>
+        <img src="" alt="" class="profil-billede">
     </article>
+
+    <button>Back to the future!</button>
 
 
 
@@ -27,6 +29,7 @@
         const id = urlParams.get("id");
 
         const medieurl = "https://persongalleri-5d3e.restdb.io/media/";
+        let person;
         const myHeaders = {
             "x-apikey": "600fe9211346a1524ff12e31"
         }
@@ -46,6 +49,11 @@
         function visPerson() {
             document.querySelector(".navn").textContent = person.fornavn + " " + person.efternavn;
             document.querySelector(".profil-billede").src = medieurl + person.billede;
+            document.querySelector("button").addEventListener("click", tilbageTilGalleri);
+        }
+        function tilbageTilGalleri(){
+            console.log(tilbageTilGalleri);
+            history.back();
         }
     </script>
 </body></html>

@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 5px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        body {
+            background-color: deeppink;
+        }
+
+        article {
+            border: 1px solid black;
+            background-color: aqua;
+        }
+
+        .valgt {
+            background-color: pink;
+        }
+
+        nav {
+            position: relative;
+            left: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button data-kategori="alle" class="valgt">Alle</button>
+        <button data-kategori="forretter">Forretter</button>
+        <button data-kategori="hovedretter">Hovedretter</button>
+        <button data-kategori="desserter">Desserter</button>
+        <button data-kategori="drikkevarer">Drikkevarer</button>
+        <button data-kategori="sideorders">Sideorders</button>
+    </nav>
+    <section id="liste"></section>
+    <template>
+        <article>
+            <img src="" alt="">
+            <h2 class="navn"></h2>
+            <p class="kategori"></p>
+            <p class="kortbeskrivelse"></p>
+            <p class="oprindelsesregion"></p>
+            <p class="pris"></p>
+
+
+        </article>
+    </template>
+    <script>
+        //INFO SOM URL OG KEY TIL DATABASE
+        const url = "https://babushka-dd8a.restdb.io/rest/menu";
+
+        const medieurl = "https://babushka-dd8a.restdb.io/media/";
+
+        const myHeaders = {
+
+                "x-apikey": "600ec2fb1346a1524ff12de4"
+
+        }
+        document.addEventListener("DOMContentLoaded", start);
+        let menu;
+        let filter = "alle";
+
+        function start() {
+            const filterknapper = document.querySelectorAll("nav button");
+            filterknapper.forEach(knap => knap.addEventListener("click", filterRetter));
+            hentData();
+        }
+
+        function filterRetter() {
+            filter = this.dataset.kategori;
+            document.querySelector(".valgt").classList.remove("valgt");
+            this.classList.add("valgt");
+            visMenu();
+
+        }
+
+
+        async function hentData() {
+            const JSONData = await fetch("https://babushka-dd8a.restdb.io/rest/menu", {
+                headers: myHeaders
+            });
+            menu = await JSONData.json();
+            console.log("Kategori", menu);
+            visMenu();
+        }
+
+        function visMenu() {
+            const main = document.querySelector("section");
+            const template = document.querySelector("template").content;
+            main.textContent = "";
+
+            menu.forEach(menu => {
+                if (filter == menu.kategori || filter == "alle") {
+                    const klon = template.cloneNode(true);
+                    klon.querySelector("img").src = medieurl + menu.billede[0];
+                    klon.querySelector(".navn").textContent = menu.navn;
+                    klon.querySelector(".kategori").textContent = menu.kategori;
+                    klon.querySelector(".kortbeskrivelse").textContent = menu.kortbeskrivelse;
+                    klon.querySelector(".oprindelsesregion").textContent = menu.oprindelsesregion;
+                    klon.querySelector(".pris").textContent = "Pris:" + menu.pris;
+                    klon.querySelector("article").addEventListener("click", () => visDetaljer(menu));
+
+                    main.appendChild(klon);
+                }
+            })
+        }
+
+        function visDetaljer(ret){
+            location.href = `single.html?id=${ret._id}`;
+        }
+
+        hentData();
+    </script>
+</body></html>
